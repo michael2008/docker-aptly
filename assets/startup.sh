@@ -9,12 +9,6 @@ if [[ ! -f /opt/aptly/aptly.sec ]] || [[ ! -f /opt/aptly/aptly.pub ]]; then
   gpg1 --batch --gen-key /opt/gpg_batch
 fi
 
-# Export the GPG Public key
-if [[ ! -f /opt/aptly/public/aptly_repo_signing.key ]]; then
-  mkdir -p /opt/aptly/public
-  gpg1 --export --armor > /opt/aptly/public/aptly_repo_signing.key
-fi
-
 # Import Ubuntu keyrings if they exist
 if [[ -f /usr/share/keyrings/ubuntu-archive-keyring.gpg ]]; then
   gpg1 --list-keys
@@ -58,6 +52,12 @@ fi
 # Aptly looks in /root/.gnupg for default keyrings
 ln -sf /opt/aptly/aptly.sec /root/.gnupg/secring.gpg
 ln -sf /opt/aptly/aptly.pub /root/.gnupg/pubring.gpg
+
+# Export the GPG Public key
+if [[ ! -f /opt/aptly/public/aptly_repo_signing.key ]]; then
+  mkdir -p /opt/aptly/public
+  gpg1 --export --armor > /opt/aptly/public/aptly_repo_signing.key
+fi
 
 # Generate Nginx Config
 /opt/nginx.conf.sh
