@@ -1,9 +1,5 @@
 #! /bin/bash
 
-# Blow away trustedkeys.gpg to avoid errors when importing
-# other keys
-rm -f /root/.gnupg/trustedkeys.gpg \
-      /root/.gnupg/trustedkeys.gpg~
 
 # If the repository GPG keypair doesn't exist, create it.
 if [[ ! -f /opt/aptly/aptly.sec ]] || [[ ! -f /opt/aptly/aptly.pub ]]; then
