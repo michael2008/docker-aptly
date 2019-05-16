@@ -11,11 +11,19 @@ if [[ ! -f builds ]]; then
 else
   LATESTIMAGE=`tail -1 builds | awk '{print $8}'`
 fi
+
+if [[ ! -z "${DNS_SERVER}" ]]; then
+    DNS_COMMAND_OPT="--dns=${DNS_SERVER}"
+else
+    DNS_COMMAND_OPT=""
+fi
+
 echo
 echo "Starting $APP_NAME..."
 echo
 echo -n "Container ID: "
 docker run \
+"${DNS_COMMAND_OPT}" \
 --detach=true \
 --log-driver=syslog \
 --name="${APP_NAME}" \
