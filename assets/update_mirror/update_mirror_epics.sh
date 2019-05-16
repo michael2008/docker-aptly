@@ -10,7 +10,7 @@ set -e
 
 DEBIAN_RELEASE=stretch
 UPSTREAM_URL="https://epicsdeb.bnl.gov/debian/"
-COMPONENTS=( main contrib )
+COMPONENTS=( main )
 REPOS=( ${DEBIAN_RELEASE}/staging )
 
 # Create repository mirrors if they don't exist
