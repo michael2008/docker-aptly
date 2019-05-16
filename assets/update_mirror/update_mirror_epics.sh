@@ -21,7 +21,7 @@ for component in ${COMPONENTS[@]}; do
     if [[ $? -ne 0 ]]; then
       echo "Creating mirror of ${repo}-${component} repository."
       aptly mirror create \
-        -architectures=amd64 ${repo}-${component} ${UPSTREAM_URL} ${repo}-${component} ${component}
+        -architectures=amd64 ${repo}-${component} ${UPSTREAM_URL} ${repo} ${component}
     fi
   done
 done
