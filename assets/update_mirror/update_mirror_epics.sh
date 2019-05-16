@@ -17,11 +17,11 @@ REPOS=( ${DEBIAN_RELEASE}/staging )
 set +e
 for component in ${COMPONENTS[@]}; do
   for repo in ${REPOS[@]}; do
-    aptly mirror list -raw | grep "^${repo}$"
+    aptly mirror list -raw | grep "^${repo}-${component}$"
     if [[ $? -ne 0 ]]; then
-      echo "Creating mirror of ${repo} repository."
+      echo "Creating mirror of ${repo}-${component} repository."
       aptly mirror create \
-        -architectures=amd64 ${repo} ${UPSTREAM_URL} ${repo} ${component}
+        -architectures=amd64 ${repo}-${component} ${UPSTREAM_URL} ${repo}-${component} ${component}
     fi
   done
 done
@@ -30,17 +30,18 @@ set -e
 # Update all repository mirrors
 for component in ${COMPONENTS[@]}; do
   for repo in ${REPOS[@]}; do
-    echo "Updating ${repo} repository mirror.."
-    aptly mirror update ${repo}
+    echo "Updating ${repo}-${component} repository mirror.."
+    aptly mirror update ${repo}-${component}
   done
 done
 
 # Create snapshots of updated repositories
 for component in ${COMPONENTS[@]}; do
   for repo in ${REPOS[@]}; do
-    echo "Creating snapshot of ${repo} repository mirror.."
-    SNAPSHOTARRAY+="${repo}-`date +%Y%m%d%H` "
-    aptly snapshot create ${repo}-`date +%Y%m%d%H` from mirror ${repo}
+    echo "Creating snapshot of ${repo}-${component} repository mirror.."
+    SNAPSHOTARRAY+="${repo}-${component}-`date +%Y%m%d%H` "
+    aptly snapshot list
+    aptly snapshot create ${repo}-${component}-`date +%Y%m%d%H` from mirror ${repo}-${component}
   done
 done
 
