@@ -9,7 +9,7 @@ set -e
 # file or mirror it similarly as done below to keep up with security updates.
 
 DEBIAN_RELEASE=stretch
-UPSTREAM_URL="http://mirrors.163.com/debian-security/"
+UPSTREAM_URL="http://mirrors.aliyun.com/debian-security/"
 
 aptly mirror create -architectures=amd64 -with-installer -with-udebs stretch-security-updates-main ${UPSTREAM_URL} stretch/updates main
 aptly mirror create -architectures=amd64 -with-installer -with-udebs stretch-security-updates-contrib ${UPSTREAM_URL} stretch/updates contrib

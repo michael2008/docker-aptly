@@ -2,7 +2,7 @@
 set -e
 
 DEBIAN_RELEASE=stretch
-UPSTREAM_URL="http://mirrors.163.com/debian/"
+UPSTREAM_URL="http://mirrors.aliyun.com/debian/"
 
 aptly mirror create -architectures=amd64 -with-installer -with-udebs stretch-updates-main ${UPSTREAM_URL} stretch-updates main
 aptly mirror create -architectures=amd64 -with-installer -with-udebs stretch-updates-contrib ${UPSTREAM_URL} stretch-updates contrib
