@@ -9,7 +9,7 @@ set -e
 # file or mirror it similarly as done below to keep up with security updates.
 
 DEBIAN_RELEASE=jessie
-UPSTREAM_URL="https://mirrors.bytedance.com/debian"
+UPSTREAM_URL="https://mirrors.bytedance.com/debian/"
 COMPONENTS=( jessie-main)
 REPOS=( ${DEBIAN_RELEASE} )
 
