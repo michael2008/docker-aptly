@@ -9,9 +9,9 @@ set -e
 # file or mirror it similarly as done below to keep up with security updates.
 
 DEBIAN_RELEASE=stretch
-UPSTREAM_URL="http://mirrors.163.com/debian-security/"
-COMPONENTS=( main )
-REPOS=( stretch/updates )
+UPSTREAM_URL="http://mirrors.163.com/debian/"
+COMPONENTS=( main contrib non-free )
+REPOS=( ${DEBIAN_RELEASE} ${DEBIAN_RELEASE}-updates )
 
 # Create repository mirrors if they don't exist
 set +e

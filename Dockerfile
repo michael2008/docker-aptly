@@ -20,7 +20,8 @@ LABEL maintainer="urpylka@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ED75B5A4483DA07C \
+RUN gpg --no-default-keyring --keyring trustedkeys.gpg --keyserver pool.sks-keyservers.net --recv-keys 9D6D8F6BC857C906 AA8E81B4331F7F50 \
+ && gpg --no-default-keyring --keyring trustedkeys.gpg --keyserver pool.sks-keyservers.net --recv-keys 7638D0442B90D010 04EE7237B7D453EC \
   && echo "deb http://repo.aptly.info/ squeeze main" >> /etc/apt/sources.list
 
 # Update APT repository & install packages
