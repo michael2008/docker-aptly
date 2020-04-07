@@ -2,16 +2,12 @@ version: "2"
 services:
     aptly:
         container_name: aptly
-        build:
-            context: ./
-            dockerfile: Dockerfile
+        image: byted/aptly:latest
         restart: always
         ports:
             - 80:80
         volumes:
-            - ./aptly_files:/opt/aptly
+            - /opt/aptly_files:/opt/aptly
+            - ./scripts:/opt/scripts
         environment:
-            - FULL_NAME="First Last"
-            - EMAIL_ADDRESS="youremail@example.com"
-            - GPG_PASSWORD="PickAPassword"
-            - HOSTNAME=aptly.example.com
+            - HOSTNAME=apt.byted.org

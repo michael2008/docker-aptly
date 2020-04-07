@@ -9,8 +9,8 @@ set -e
 # file or mirror it similarly as done below to keep up with security updates.
 
 DEBIAN_RELEASE=stretch
-UPSTREAM_URL="http://deb.debian.org/debian/"
-COMPONENTS=( main )
+UPSTREAM_URL="http://mirrors.163.com/debian/"
+COMPONENTS=( main contrib non-free )
 REPOS=( ${DEBIAN_RELEASE} ${DEBIAN_RELEASE}-updates )
 
 # Create repository mirrors if they don't exist
@@ -21,7 +21,7 @@ for component in ${COMPONENTS[@]}; do
     if [[ $? -ne 0 ]]; then
       echo "Creating mirror of ${repo} repository."
       aptly mirror create \
-        -architectures=amd64 ${repo} ${UPSTREAM_URL} ${repo} ${component}
+        -architectures=amd64 -with-installer ${repo} ${UPSTREAM_URL} ${repo} ${component}
     fi
   done
 done
