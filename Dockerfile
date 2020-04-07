@@ -20,7 +20,11 @@ LABEL maintainer="urpylka@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "deb http://repo.aptly.info/ squeeze main" >> /etc/apt/sources.list
+RUN apt-key adv --keyserver pool.sks-keyservers.net --recv-keys ED75B5A4483DA07C \
+    && echo "deb http://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse"  > /etc/apt/sources.list \
+    && echo "deb http://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb http://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse" >> /etc/apt/sources.list \
+    && echo "deb http://repo.aptly.info/ squeeze main" >> /etc/apt/sources.list
 
 # Update APT repository & install packages
 RUN apt-get -q update --allow-unauthenticated  \
