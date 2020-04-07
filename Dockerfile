@@ -22,6 +22,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN gpg --no-default-keyring --keyring trustedkeys.gpg --keyserver pool.sks-keyservers.net --recv-keys 9D6D8F6BC857C906 AA8E81B4331F7F50 \
  && gpg --no-default-keyring --keyring trustedkeys.gpg --keyserver pool.sks-keyservers.net --recv-keys 7638D0442B90D010 04EE7237B7D453EC \
+ && gpg --no-default-keyring --keyring trustedkeys.gpg --keyserver pool.sks-keyservers.net --recv-keys ED75B5A4483DA07C \
   && echo "deb http://repo.aptly.info/ squeeze main" >> /etc/apt/sources.list
 
 # Update APT repository & install packages
