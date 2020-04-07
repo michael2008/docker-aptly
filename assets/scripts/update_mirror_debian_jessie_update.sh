@@ -2,7 +2,7 @@
 set -e
 
 DEBIAN_RELEASE=jessie
-UPSTREAM_URL="http://mirrors.163.com/debian/"
+UPSTREAM_URL="http://mirrors.aliyun.com/debian/"
 
 aptly mirror create -architectures=amd64 -with-installer -with-udebs jessie-updates-main ${UPSTREAM_URL} jessie-updates main
 aptly mirror create -architectures=amd64 -with-installer -with-udebs jessie-updates-contrib ${UPSTREAM_URL} jessie-updates contrib
