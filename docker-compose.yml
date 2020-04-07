@@ -11,3 +11,6 @@ services:
             - ./assets/scripts:/opt/scripts
         environment:
             - HOSTNAME=apt.byted.org
+            - FULL_NAME="byted.org"
+            - EMAIL_ADDRESS="admin@byed.org"
+            - GPG_PASSWORD="PickAPassword"
