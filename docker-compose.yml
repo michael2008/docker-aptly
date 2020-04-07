@@ -8,6 +8,6 @@ services:
             - 80:80
         volumes:
             - /opt/aptly_files:/opt/aptly
-            - ./scripts:/opt/scripts
+            - ./assets/scripts:/opt/scripts
         environment:
             - HOSTNAME=apt.byted.org
