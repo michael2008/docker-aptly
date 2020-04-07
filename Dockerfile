@@ -25,8 +25,8 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ED75B5A448
 
 # Update APT repository & install packages
 RUN apt-get -q update \
-  && apt-get -y install \
-    aptly=1.3.0 \
+  && apt-get -y install --no-install-recommends \
+    aptly=1.4.0 \
     bzip2 \
     gnupg=1.4.20-1ubuntu3.3 \
     gpgv=1.4.20-1ubuntu3.3 \
