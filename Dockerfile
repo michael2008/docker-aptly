@@ -20,7 +20,7 @@ LABEL maintainer="urpylka@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-key adv --keyserver pool.sks-keyservers.net --recv-keys ED75B5A4483DA07C \
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ED75B5A4483DA07C \
   && echo "deb http://repo.aptly.info/ squeeze main" >> /etc/apt/sources.list
 
 # Update APT repository & install packages
